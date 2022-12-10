@@ -12,8 +12,6 @@ void setup()
 {
   rtc.halt(false);
 
-  Serial.begin(9600);
-
   lcd.init();
   lcd.backlight();
   lcd.setCursor(0, 0);
@@ -35,7 +33,6 @@ void loop()
   }
 
   if (IrReceiver.decode()) {
-    IrReceiver.printIRResultShort(&Serial);
     IrReceiver.resume();
     Time s = rtc.getTime();
     if (IrReceiver.decodedIRData.command == 0x15) { // Plus button
